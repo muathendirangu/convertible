@@ -19,18 +19,18 @@ func TestCurrencyExchange(t *testing.T)  {
 
 	nairaToKes :=ex.Exchange(200,"NGN","KES")
 	
-	if nairaToKes !=52 {
+	if nairaToKes.Amount !=52 {
 		t.Errorf("Expected 52, but got %f",nairaToKes)
 	}
 	nairaToCedi :=ex.Exchange(200,"NGN","GHC")
 	
-	if nairaToCedi !=2.8 {
+	if nairaToCedi.Amount !=2.8 {
 		t.Errorf("Expected 2.8, but got %f",nairaToCedi)
 	}
 
 	kesToNaira :=ex.Exchange(200,"KES","NGN")
 	
-	if kesToNaira !=760 {
+	if kesToNaira.Amount !=760 {
 		t.Errorf("Expected 760, but got %f",kesToNaira)
 	}
 	
