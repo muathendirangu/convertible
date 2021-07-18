@@ -10,7 +10,7 @@ import (
 )
 	 
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func currencyConverterHandler(w http.ResponseWriter, r *http.Request) {
 	rates := []currency.Rate{
 		{"NGN","KES",0.26},
 		{"NGN","GHC",0.014},
@@ -42,6 +42,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-    http.HandleFunc("/", handler)
+    http.HandleFunc("/", currencyConverterHandler)
     log.Fatal(http.ListenAndServe(":8080", nil))
 }
