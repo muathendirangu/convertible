@@ -42,7 +42,7 @@ func (e ExchangeRate) Exchange(amount float64, from,to string)(CurrencyResponse)
 	for _,v := range e.Rates{
 		if v.CurrencyFrom == from && v.CurrencyTo==to {
 			return CurrencyResponse{
-				Message: fmt.Sprintf(" Amount %v %s is equivalent to %v %s after conversion",amount,from,math.Round((amount*v.ConversionRate)*100)/100,to),
+				Message: fmt.Sprintf(" Amount %v %s is equivalent to %v %s after conversion using the rate %v",amount,from,math.Round((amount*v.ConversionRate)*100)/100,to,v.ConversionRate),
 				Amount:math.Round((amount*v.ConversionRate)*100)/100,
 			} 
 		}
