@@ -11,7 +11,10 @@ A REST based Go web service to convert currencies in Go. Currently supports conv
 ## Build from scratch
 
 ### 1. Project setup
+clone the code
 `git clone git@github.com:muathendirangu/convertible.git`
+
+change directory
 `cd convertible`
 
 ### 2. Setup project
