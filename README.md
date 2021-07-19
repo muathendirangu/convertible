@@ -20,21 +20,25 @@ change directory
 ### 2. Setup project
  
 rename the file from `.env.example` to `.env` 
-
 ```
 PORT=
 ```
-
 Populate this file with your preferred port variable.
 
-### 3. Run the application
+
+### 3. Running unit tests
+
+To run tests use the following commands
+`go test -v ./... --cover`
+
+### 4. Run the application
 
 Run the application: `go run main.go`.
 
 Using curl:
 `curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": NUMBERVALUE}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
 
-using other clients(i.e postman)
+using other clients(i.e postman):
 `http://localhost:PORT/`
 
 **method:** POST
@@ -60,9 +64,6 @@ using other clients(i.e postman)
 }
 ```
 
-### 4. Running unit tests
-To run tests use the following commands
-`go test -v ./... --cover`
 
 ## Author
 
