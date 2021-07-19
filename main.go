@@ -14,12 +14,12 @@ import (
 
 func currencyConverterHandler(w http.ResponseWriter, r *http.Request) {
 	rates := []currency.Rate{
-		{"NGN","KES",0.26},
-		{"NGN","GHC",0.014},
-		{"GHC","KES",18.17},
-		{"GHC","NGN",69.06},
-		{"KES","NGN",3.80},
-		{"KES","GHC",0.055},
+		{CurrencyFrom:"NGN",CurrencyTo:"KES",ConversionRate:  0.26},
+		{CurrencyFrom:"NGN",CurrencyTo:"GHC",ConversionRate:0.014},
+		{CurrencyFrom:"GHC",CurrencyTo:"KES",ConversionRate:18.17},
+		{CurrencyFrom:"GHC",CurrencyTo:"NGN",ConversionRate:69.06},
+		{CurrencyFrom:"KES",CurrencyTo:"NGN",ConversionRate:3.80},
+		{CurrencyFrom:"KES",CurrencyTo:"GHC",ConversionRate:0.055},
 	}
 	ex := currency.ExchangeRate{ 
 		Rates: rates,
