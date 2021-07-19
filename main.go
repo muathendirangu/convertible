@@ -46,5 +46,6 @@ func main() {
         log.Fatal("Error loading .env file")
     }
     http.HandleFunc("/", currencyConverterHandler)
+	log.Printf("Now listening for incoming requests on port %s...\n", os.Getenv("PORT"))
     log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
