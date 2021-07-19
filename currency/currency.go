@@ -30,10 +30,10 @@ type ExchangeRate struct{
 	Rates []Rate
 }
 
-func (e ExchangeRate) Exchange(amount float64, from,to string)(CurrencyResponse){
+func (e *ExchangeRate) Exchange(amount float64, from,to string)(*CurrencyResponse){
 	for _,v := range e.Rates{
 		if v.CurrencyFrom == from && v.CurrencyTo==to {
-			return CurrencyResponse{
+			return &CurrencyResponse{
 				From: from,
 				To: to,
 				InitialAmount: amount,
@@ -44,7 +44,7 @@ func (e ExchangeRate) Exchange(amount float64, from,to string)(CurrencyResponse)
 			} 
 		}
 	}
-	return CurrencyResponse{
+	return &CurrencyResponse{
 		Message: "something is off kindly ensure that data input is correct. i.e the conversion currency choice should be uppercase e.g NGN and amount should be a number e.g 300",
 	}  
 }

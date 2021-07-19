@@ -13,7 +13,7 @@ func TestCurrencyExchange(t *testing.T)  {
 		{"KES","NGN",3.80},
 		{"KES","GHC",0.055},
 	}
-	ex := ExchangeRate{
+	ex := &ExchangeRate{
 		Rates: rates,
 	}
 	assertMessage := func(t testing.TB, got, want interface{}) {
