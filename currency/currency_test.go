@@ -70,23 +70,5 @@ func TestCurrencyExchange(t *testing.T)  {
 		got := emptySecondCurrency.ConvertedAmount
 		assertMessage(t,got,want)
 	})
-	// t.Run("test passing negative amount", func(t *testing.T) {
-	// 	passNegativeAmount := ex.Exchange(-200,"NGN","KES")
-	// 	want:= "amount can only be of type float and must be a number greater than zero"
-	// 	got := passNegativeAmount.Message
-	// 	assertMessage(t,got,want)
-	// })
-	// t.Run("test passing both currency choices with empty values", func(t *testing.T) {
-	// 	emptyBothCurrency := ex.Exchange(200,"","")
-	// 	want:= float64(0)
-	// 	got := emptyBothCurrency.ConvertedAmount
-	// 	assertMessage(t,got,want)
-	// })
-	// t.Run("test passing zero values", func(t *testing.T) {
-	// 	passZeroValues := ex.Exchange(0,"","")
-	// 	want:= "currency choices or amount cannot be blank"
-	// 	got := passZeroValues.Message
-	// 	assertMessage(t,got,want)
-	// })
 }
 
