@@ -34,6 +34,32 @@ Run the application: `go run main.go`.
 Using curl:
 `curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": NUMBERVALUE}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
 
+using other clients(i.e postman)
+`/`
+
+**method:** POST
+
+**payload:**
+
+```
+{
+    "amount": 5,
+    "from": "KES",
+    "to": "GHC"
+}
+```
+**response:**
+```
+{
+    "From": "KES",
+    "To": "GHC",
+    "InitialAmount": 5,
+    "ConvertedAmount": 0.28,
+    "DefaultConversionRate": 0.055,
+    "Message": " Amount 5 KES is equivalent to 0.28 GHC after conversion using the rate of 1 KES equals 0.055 GHC"
+}
+```
+
 ### 4. Running unit tests
 To run tests use the following commands
 `go test -v ./... --cover`
