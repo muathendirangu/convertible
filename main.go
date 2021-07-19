@@ -2,11 +2,11 @@ package main
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
 	"net/http"
 
 	"github.com/muathendirangu/convertible/currency"
+	"github.com/muathendirangu/convertible/validator"
 )
 	 
 
@@ -24,20 +24,16 @@ func currencyConverterHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	currencyReq:= currency.CurrencyRequest{}
-    req, err := ioutil.ReadAll(r.Body)
-	if err != nil {
-		log.Fatalf("an error %v occurred while reading the request body", err)
+	if err := json.NewDecoder(r.Body).Decode(&currencyReq); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
-	json.Unmarshal(req,&currencyReq)
-	if err != nil {
-		log.Fatalf("an error %v occurred while parsing the request body", err)
+	if err:=  validator.ValidateInput(currencyReq); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
 	}
-	
-	conversion := ex.Exchange(currencyReq.Amount,currencyReq.From,currencyReq.To)
 
-	if err != nil {
-		log.Fatalf("an error occured %s",err)
-	}
+	conversion := ex.Exchange(currencyReq.Amount,currencyReq.From,currencyReq.To)
 	json.NewEncoder(w).Encode(conversion)
 }
 
