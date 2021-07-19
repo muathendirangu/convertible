@@ -35,7 +35,7 @@ Using curl:
 `curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": NUMBERVALUE}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
 
 using other clients(i.e postman)
-`/`
+`http://localhost:PORT/`
 
 **method:** POST
 
