@@ -4,7 +4,9 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 
+	"github.com/joho/godotenv"
 	"github.com/muathendirangu/convertible/currency"
 	"github.com/muathendirangu/convertible/validator"
 )
@@ -38,6 +40,11 @@ func currencyConverterHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	 err := godotenv.Load(".env")
+
+    if err != nil {
+        log.Fatal("Error loading .env file")
+    }
     http.HandleFunc("/", currencyConverterHandler)
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), nil))
 }
