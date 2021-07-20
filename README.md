@@ -1,11 +1,15 @@
 ![example workflow](https://github.com/muathendirangu/convertible/actions/workflows/go.yml/badge.svg)
 
-# convertible - currency converter
+# convertible - currency converter REST based web service
 A REST based Go web service to convert currencies in Go. Currently supports conversions of following currencies(Nigerian Naira(NGN), Ghanaian Cedis(GHS), and Kenyan Shillings (KSH))
+
+### Assumptions
+- A simple REST based service that takes a json payload of Currency to Convert from, Currency to convert to and an Amount that returns a response json object containing the initial json payload with additional Message field to give more context on the conversion.
+- That conversion rate are pre-selected(taken from google conversion rates on date 16th July 2021) and stored in a local slice of of structs containing From,To and conversion rate per object. Any request that is sent to the endpoint utilizes this hard-corded slice of structs as a point of reference for computation.
 
 ## Technologies used
   - [Golang](https://golang.org/) - Go is an open source programming language that makes it easy to build simple, reliable, and efficient software.
-  - [GoDotEnv](https://pkg.go.dev/github.com/joho/godotenv) A Go (golang) port of the Ruby dotenv project (which loads env vars from a .env file).
+  - [GoDotEnv](https://pkg.go.dev/github.com/joho/godotenv) A Go (golang)  which loads env vars from a .env file. It is easier and straightforward to use and widely used by most open-source project
 
 
 ## Build from scratch
