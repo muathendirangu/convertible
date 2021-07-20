@@ -70,5 +70,17 @@ func TestCurrencyExchange(t *testing.T)  {
 		got := emptySecondCurrency.ConvertedAmount
 		assertMessage(t,got,want)
 	})
+	t.Run("test passing second currency choice in lowercase", func(t *testing.T) {
+		emptySecondCurrency := ex.Exchange(200,"NGN","kes")
+		want:= "something is off kindly ensure that data input is correct. i.e the conversion currency choice should be uppercase e.g NGN"
+		got := emptySecondCurrency.Message
+		assertMessage(t,got,want)
+	})
+	t.Run("test passing amount as zero", func(t *testing.T) {
+		emptySecondCurrency := ex.Exchange(0,"NGN","KES")
+		want:= float64(0)
+		got := emptySecondCurrency.ConvertedAmount
+		assertMessage(t,got,want)
+	})
 }
 

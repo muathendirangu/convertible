@@ -10,7 +10,7 @@ type CurrencyExchange interface{
 type CurrencyRequest struct{
 	From string `json:"from"`
 	To string `json:"to"`
-	Amount float64 `json:"amount"`
+	Amount float64 `json:"amount,string"`
 }
 
 type CurrencyResponse struct{
@@ -45,6 +45,6 @@ func (e *ExchangeRate) Exchange(amount float64, from,to string)(*CurrencyRespons
 		}
 	}
 	return &CurrencyResponse{
-		Message: "something is off kindly ensure that data input is correct. i.e the conversion currency choice should be uppercase e.g NGN and amount should be a number e.g 300",
+		Message: "something is off kindly ensure that data input is correct. i.e the conversion currency choice should be uppercase e.g NGN",
 	}  
 }

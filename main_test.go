@@ -13,7 +13,7 @@ var addConversionChoices= []struct{
   {
    
     body: []byte(`{"from":"NGN","to":"KES","amount":200}`),
-    wantedCode: http.StatusOK,
+    wantedCode: http.StatusBadRequest,
   },
   {
     body: []byte("{}"),
@@ -21,7 +21,7 @@ var addConversionChoices= []struct{
   },
   {
 	body: []byte(`{"amount": "5","from": "KES","to": "GHC"}`),
-	wantedCode: http.StatusBadRequest,
+	wantedCode: http.StatusOK,
   },
 }
 func TestCurrencyConverterHandler(t *testing.T)  {
