@@ -47,7 +47,7 @@ using other clients(i.e postman):
 
 ```
 {
-    "amount": 5,
+    "amount": "5",
     "from": "KES",
     "to": "GHC"
 }
