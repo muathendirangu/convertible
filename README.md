@@ -36,7 +36,7 @@ To run tests use the following commands
 Run the application: `go run main.go`.
 
 Using curl:
-`curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": "STRINGVALUE"}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
+`curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": NUMBERVALUE}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
 
 using other clients(i.e postman):
 `http://localhost:PORT/`
