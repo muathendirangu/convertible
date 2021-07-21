@@ -23,6 +23,22 @@ var addConversionChoices= []struct{
 	body: []byte(`{"amount": "5","from": "KES","to": "GHC"}`),
 	wantedCode: http.StatusBadRequest,
   },
+  {
+	body: []byte(`{"amount": 0,"from": "KES","to": "GHC"}`),
+	wantedCode: http.StatusBadRequest,
+  },
+  {
+	body: []byte(`{ "from": "KES", "to": "ngn","amount": 200}`),
+	wantedCode: http.StatusBadRequest,
+  },
+  {
+	body: []byte(`{"to": "KES","amount": 200}`),
+	wantedCode: http.StatusBadRequest,
+  },
+  {
+	body: []byte(`{ "from": "KES","amount": 200}`),
+	wantedCode: http.StatusBadRequest,
+  },
 }
 func TestCurrencyConverterHandler(t *testing.T)  {
 	for _, testCase := range addConversionChoices{
