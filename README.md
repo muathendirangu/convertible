@@ -42,11 +42,13 @@ Run the application: `go run main.go`.
 Using curl:
 `curl -d '{ "from": "STRINGVALUE", "to": "STRINGVALUE","amount": NUMBERVALUE}' -H "Content-Type: application/json" -X POST http://localhost:PORT/`
 
-using other clients(i.e postman):
+NB. Allowed currency choice representation
+- KES,GHC and NGN
+- sample request response:
 `http://localhost:PORT/`
 
 **method:** POST
-
+Convert from Kenyan Shillings(KES) to Ghanian Cedi(GHC)
 **payload:**
 
 ```
@@ -67,8 +69,48 @@ using other clients(i.e postman):
     "Message": " Amount 5 KES is equivalent to 0.28 GHC after conversion using the rate of 1 KES equals 0.055 GHC"
 }
 ```
+Convert from Kenyan Shillings(KES) to Nigerian Naira(NGN)
+**payload:**
 
+```
+{
+    "amount": "200",
+    "from": "KES",
+    "to": "NGN"
+}
+```
+**response:**
+```
+{
+    "From": "KES",
+    "To": "NGN",
+    "InitialAmount": 200,
+    "ConvertedAmount": 760,
+    "DefaultConversionRate": 3.8,
+    "Message": " Amount 200 KES is equivalent to 760 NGN after conversion using the rate of 1 KES equals 3.8 NGN"
+}
+```
+Convert from Ghanian Cedi(GHC) to Kenyan Shillings(KES) 
+**payload:**
 
+```
+{
+    "amount": "200",
+    "from": "GHC",
+    "to": "KES"
+}
+```
+**response:**
+```
+{
+    "From": "GHC",
+    "To": "KES",
+    "InitialAmount": 200,
+    "ConvertedAmount": 3634,
+    "DefaultConversionRate": 3.8,
+    "Message": " Amount 200 KES is equivalent to 3634 KES after conversion using the rate of 1 GHC equals 18.17 KES"
+}
+```
 ## Author
 
 - [Charles Ndirangu](https://twitter.com/muathendirangu)
