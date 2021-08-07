@@ -32,22 +32,7 @@ type Rate struct{
 type ExchangeRate struct{
 	Rates RateDictionary
 }
-type Rates interface {
-    CurrentConversion() Rate
-    SetCurrentConversion(updatedConversion Rate)
-}
 
-type CurrentConversion struct {
-    currentConversion Rate
-}
-
-func (cc CurrentConversion) CurrentConversion() Rate {
-    return cc.currentConversion
-}
-
-func (cc *CurrentConversion) SetCurrentConversion(updatedConversion Rate) {
-    cc.currentConversion = updatedConversion
-}
 
 func (e *ExchangeRate) Exchange(amount float64, from,to string)(*CurrencyResponse){
 	for _,v := range e.Rates{
