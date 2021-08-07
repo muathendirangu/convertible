@@ -1,17 +1,18 @@
 package currency
 
 import (
+	"fmt"
 	"testing"
 )
 
 func TestCurrencyExchange(t *testing.T)  {
-	rates := []Rate{
-		{"NGN","KES",0.26},
-		{"NGN","GHC",0.014},
-		{"GHC","KES",18.17},
-		{"GHC","NGN",69.06},
-		{"KES","NGN",3.80},
-		{"KES","GHC",0.055},
+	rates := RateDictionary{
+		"ngnkes":{"NGN","KES",0.26},
+		"ngnghc":{"NGN","GHC",0.014},
+		"ghckes":{"GHC","KES",18.17},
+		"ghcngn":{"GHC","NGN",69.06},
+		"kesngn":{"KES","NGN",3.80},
+		"kesghc":{"KES","GHC",0.055},
 	}
 	ex := &ExchangeRate{
 		Rates: rates,
@@ -22,6 +23,17 @@ func TestCurrencyExchange(t *testing.T)  {
             t.Errorf("got %f want %f", got, want)
         }
     }
+	t.Run("test NGN to NGN",func(t *testing.T) {
+		nairaToNaira := ex.Exchange(100,"NGN","NGN")
+		want := float64(0)
+		got := nairaToNaira.ConvertedAmount
+		if got != want {
+			fmt.Printf("got %v but want %v", got, want)
+		}
+	})
+
+
+
 	t.Run("test conversion from NGN to KES", func(t *testing.T) {
 		nairaToKes :=ex.Exchange(200,"NGN","KES")
 		want := float64(52)

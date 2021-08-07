@@ -2,6 +2,7 @@ package currency
 
 import (
 	"fmt"
+
 	"math"
 )
 type CurrencyExchange interface{
@@ -20,6 +21,8 @@ type CurrencyResponse struct{
 	Message interface{}
 	
 }
+type RateDictionary map[string]Rate
+
 type Rate struct{
 	CurrencyFrom string `json:"currencyfrom"`
 	CurrencyTo string `json:"currencyto"`
@@ -27,7 +30,23 @@ type Rate struct{
 }
 
 type ExchangeRate struct{
-	Rates []Rate
+	Rates RateDictionary
+}
+type Rates interface {
+    CurrentConversion() Rate
+    SetCurrentConversion(updatedConversion Rate)
+}
+
+type CurrentConversion struct {
+    currentConversion Rate
+}
+
+func (cc CurrentConversion) CurrentConversion() Rate {
+    return cc.currentConversion
+}
+
+func (cc *CurrentConversion) SetCurrentConversion(updatedConversion Rate) {
+    cc.currentConversion = updatedConversion
 }
 
 func (e *ExchangeRate) Exchange(amount float64, from,to string)(*CurrencyResponse){
@@ -44,7 +63,9 @@ func (e *ExchangeRate) Exchange(amount float64, from,to string)(*CurrencyRespons
 			} 
 		}
 	}
-	return &CurrencyResponse{
+	return &CurrencyResponse{From: from,
+				To: to,
+				InitialAmount: amount,
 		Message: "something is off kindly ensure that data input is correct. i.e the conversion currency choice should be uppercase e.g NGN",
 	}  
 }
